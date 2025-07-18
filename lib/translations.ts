@@ -1,4 +1,80 @@
-export const translations = {
+export interface TestimonialItem {
+  name: string
+  role: string
+  company: string
+  text: string
+}
+
+export interface ExperienceItem {
+  title: string
+  company: string
+  period: string
+  description: string
+}
+
+export interface TranslationType {
+  nav: {
+    home: string
+    about: string
+    skills: string
+    experience: string
+    projects: string
+    testimonials: string
+    contact: string
+  }
+  hero: {
+    greeting: string
+    name: string
+    title: string
+    subtitle: string
+    cta: string
+  }
+  about: {
+    title: string
+    bio: string
+    education: string
+    educationText: string
+    experience: string
+    experienceText: string
+  }
+  skills: {
+    title: string
+    core: string
+    frameworks: string
+    tools: string
+    advanced: string
+  }
+  experience: {
+    title: string
+    current: string
+    items: ExperienceItem[]
+  }
+  projects: {
+    title: string
+    viewProject: string
+    viewCode: string
+  }
+  testimonials: {
+    title: string
+    items: TestimonialItem[]
+  }
+  contact: {
+    title: string
+    subtitle: string
+    email: string
+    telegram: string
+    github: string
+    linkedin: string
+    twitter: string
+    website: string
+  }
+  footer: {
+    copyright: string
+    brand: string
+  }
+}
+
+export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
   en: {
     nav: {
       home: "Home",

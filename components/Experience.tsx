@@ -1,8 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card"
+import type { TranslationType } from "@/lib/translations"
 
 interface ExperienceProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function Experience({ isDark, t }: ExperienceProps) {
@@ -10,7 +11,6 @@ export default function Experience({ isDark, t }: ExperienceProps) {
     <section
       id="experience"
       className={`min-h-screen flex items-center py-20 px-4 ${isDark ? "bg-[#1C2541]" : "bg-gray-50"}`}
-      style={{ scrollSnapAlign: "start" }}
     >
       <div className="max-w-4xl mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
@@ -22,7 +22,7 @@ export default function Experience({ isDark, t }: ExperienceProps) {
           <div className={`absolute left-8 top-0 bottom-0 w-0.5 ${isDark ? "bg-[#3A506B]" : "bg-gray-300"}`} />
 
           <div className="space-y-12">
-            {t.experience.items.map((item: any, index: number) => (
+            {t.experience.items.map((item, index) => (
               <div key={index} className="relative flex items-start space-x-8">
                 {/* Timeline dot */}
                 <div

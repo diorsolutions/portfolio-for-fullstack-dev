@@ -28,14 +28,6 @@ export default function Portfolio() {
     document.documentElement.classList.toggle("dark")
   }
 
-  // Language cycle
-  const cycleLanguage = () => {
-    const languages: ("en" | "ru" | "uz")[] = ["en", "ru", "uz"]
-    const currentIndex = languages.indexOf(language)
-    const nextIndex = (currentIndex + 1) % languages.length
-    setLanguage(languages[nextIndex])
-  }
-
   // Scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -84,10 +76,7 @@ export default function Portfolio() {
   }, [])
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${isDark ? "dark bg-[#0B132B]" : "bg-white"}`}
-      style={{ scrollSnapType: "y mandatory" }}
-    >
+    <div className={`min-h-screen transition-colors duration-300 ${isDark ? "dark bg-[#0B132B]" : "bg-white"}`}>
       <ScrollProgress scrollProgress={scrollProgress} />
 
       <Navigation
@@ -97,7 +86,7 @@ export default function Portfolio() {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         toggleTheme={toggleTheme}
-        cycleLanguage={cycleLanguage}
+        setLanguage={setLanguage}
         scrollToSection={scrollToSection}
         t={t}
       />

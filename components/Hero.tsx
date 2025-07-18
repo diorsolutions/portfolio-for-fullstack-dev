@@ -1,20 +1,17 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import type { TranslationType } from "@/lib/translations"
 
 interface HeroProps {
   isDark: boolean
-  t: any
+  t: TranslationType
   scrollToSection: (section: string) => void
 }
 
 export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center px-4 pt-16"
-      style={{ scrollSnapAlign: "start" }}
-    >
+    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
       <div className="max-w-4xl mx-auto text-center">
         <div className="animate-fade-in-up">
           <p className={`text-lg mb-4 ${isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"} animate-pulse`}>

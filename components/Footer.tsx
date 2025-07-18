@@ -1,6 +1,8 @@
+import type { TranslationType } from "@/lib/translations"
+
 interface FooterProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function Footer({ isDark, t }: FooterProps) {

@@ -1,8 +1,9 @@
 import { Code } from "lucide-react"
+import type { TranslationType } from "@/lib/translations"
 
 interface AboutProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function About({ isDark, t }: AboutProps) {
@@ -10,7 +11,6 @@ export default function About({ isDark, t }: AboutProps) {
     <section
       id="about"
       className={`min-h-screen flex items-center py-20 px-4 ${isDark ? "bg-[#1C2541]" : "bg-gray-50"}`}
-      style={{ scrollSnapAlign: "start" }}
     >
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>

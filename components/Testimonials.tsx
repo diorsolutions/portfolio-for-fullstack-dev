@@ -1,8 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card"
+import type { TranslationType } from "@/lib/translations"
 
 interface TestimonialsProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function Testimonials({ isDark, t }: TestimonialsProps) {
@@ -10,7 +11,6 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
     <section
       id="testimonials"
       className={`min-h-screen flex items-center py-20 px-4 ${isDark ? "bg-[#1C2541]" : "bg-gray-50"}`}
-      style={{ scrollSnapAlign: "start" }}
     >
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
@@ -18,7 +18,7 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {t.testimonials.items.map((testimonial: any, index: number) => (
+          {t.testimonials.items.map((testimonial, index) => (
             <Card
               key={index}
               className={`${
@@ -47,7 +47,9 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
                     </p>
                   </div>
                 </div>
-                <p className={`${isDark ? "text-gray-300" : "text-gray-600"} italic`}>"{testimonial.text}"</p>
+                <p className={`${isDark ? "text-gray-300" : "text-gray-600"} italic`}>
+                  &ldquo;{testimonial.text}&rdquo;
+                </p>
               </CardContent>
             </Card>
           ))}

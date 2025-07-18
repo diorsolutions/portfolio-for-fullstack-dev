@@ -13,7 +13,15 @@ interface ProjectsProps {
 
 export default function Projects({ isDark, t }: ProjectsProps) {
   return (
-    <section id="projects" className="min-h-screen flex items-center py-20 px-4" style={{ scrollSnapAlign: "start" }}>
+    <section
+      id="projects"
+      className="flex items-center py-20 px-4"
+      style={{
+        scrollSnapAlign: "start",
+        height: "100vh",
+        minHeight: "100vh",
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
           {t.projects.title}

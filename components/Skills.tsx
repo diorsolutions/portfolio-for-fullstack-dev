@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { skillsData } from "@/lib/data"
+import type { TranslationType } from "@/lib/translations"
 
 interface SkillsProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function Skills({ isDark, t }: SkillsProps) {
@@ -15,7 +16,7 @@ export default function Skills({ isDark, t }: SkillsProps) {
   ]
 
   return (
-    <section id="skills" className="min-h-screen flex items-center py-20 px-4" style={{ scrollSnapAlign: "start" }}>
+    <section id="skills" className="min-h-screen flex items-center py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
           {t.skills.title}

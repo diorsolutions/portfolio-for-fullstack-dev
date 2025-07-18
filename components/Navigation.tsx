@@ -1,7 +1,8 @@
 "use client"
 
-import { Moon, Sun, Globe, Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { TranslationType } from "@/lib/translations"
 
 interface NavigationProps {
   isDark: boolean
@@ -10,9 +11,9 @@ interface NavigationProps {
   isMenuOpen: boolean
   setIsMenuOpen: (open: boolean) => void
   toggleTheme: () => void
-  cycleLanguage: () => void
+  setLanguage: (lang: "en" | "ru" | "uz") => void
   scrollToSection: (section: string) => void
-  t: any
+  t: TranslationType
 }
 
 export default function Navigation({
@@ -22,7 +23,7 @@ export default function Navigation({
   isMenuOpen,
   setIsMenuOpen,
   toggleTheme,
-  cycleLanguage,
+  setLanguage,
   scrollToSection,
   t,
 }: NavigationProps) {
@@ -71,15 +72,17 @@ export default function Navigation({
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={cycleLanguage}
-              className={`${isDark ? "text-[#6FFFE9] hover:bg-[#1C2541]" : "text-[#0B132B] hover:bg-gray-100"}`}
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as "en" | "ru" | "uz")}
+              className={`px-3 py-1 rounded border ${
+                isDark ? "bg-[#1C2541] border-[#3A506B] text-[#6FFFE9]" : "bg-white border-gray-300 text-[#0B132B]"
+              } text-sm`}
             >
-              <Globe className="h-4 w-4 mr-1" />
-              {language.toUpperCase()}
-            </Button>
+              <option value="en">🇺🇸 EN</option>
+              <option value="ru">🇷🇺 RU</option>
+              <option value="uz">🇺🇿 UZ</option>
+            </select>
 
             {/* Mobile Menu Button */}
             <Button

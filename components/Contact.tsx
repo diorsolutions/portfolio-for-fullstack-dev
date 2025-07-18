@@ -2,10 +2,11 @@
 
 import { Mail, MessageCircle, Github, Linkedin, Twitter, ExternalLink } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import type { TranslationType } from "@/lib/translations"
 
 interface ContactProps {
   isDark: boolean
-  t: any
+  t: TranslationType
 }
 
 export default function Contact({ isDark, t }: ContactProps) {
@@ -49,7 +50,7 @@ export default function Contact({ isDark, t }: ContactProps) {
   ]
 
   return (
-    <section id="contact" className="min-h-screen flex items-center py-20 px-4" style={{ scrollSnapAlign: "start" }}>
+    <section id="contact" className="min-h-screen flex items-center py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className={`text-4xl font-bold mb-8 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>{t.contact.title}</h2>
         <p className={`text-lg mb-12 ${isDark ? "text-gray-300" : "text-gray-600"}`}>{t.contact.subtitle}</p>
