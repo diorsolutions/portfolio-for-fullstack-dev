@@ -41,8 +41,8 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  width={500}
-                  height={300}
+                  width={600}
+                  height={500}
                   className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
