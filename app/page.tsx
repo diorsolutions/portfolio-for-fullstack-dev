@@ -1,60 +1,64 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Navigation from "@/components/Navigation"
-import Hero from "@/components/Hero"
-import About from "@/components/About"
-import Skills from "@/components/Skills"
-import Experience from "@/components/Experience"
-import Projects from "@/components/Projects"
-import Testimonials from "@/components/Testimonials"
-import Contact from "@/components/Contact"
-import Footer from "@/components/Footer"
-import ScrollProgress from "@/components/ScrollProgress"
-import { translations } from "@/lib/translations"
+import { useState, useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Experience from "@/components/Experience";
+import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import { translations } from "@/lib/translations";
+import ProjectsSeond from "@/components/ProjectsSeond";
+// import DarkVeil from "../yes/DarkVeil/DarkVeil"
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(true) // Default to dark mode
-  const [language, setLanguage] = useState<"en" | "ru" | "uz">("en")
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [isDark, setIsDark] = useState(true); // Default to dark mode
+  const [language, setLanguage] = useState<"en" | "ru" | "uz">("en");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const t = translations[language]
+  const t = translations[language];
 
   // Theme toggle
   const toggleTheme = () => {
-    setIsDark(!isDark)
-    document.documentElement.classList.toggle("dark")
-  }
+    setIsDark(!isDark);
+    document.documentElement.classList.toggle("dark");
+  };
 
   // Scroll to section
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setActiveSection(sectionId)
-      setIsMenuOpen(false)
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(sectionId);
+      setIsMenuOpen(false);
     }
-  }
+  };
 
   // Scroll progress
   useEffect(() => {
     const updateScrollProgress = () => {
-      const scrollPx = document.documentElement.scrollTop
-      const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      const scrolled = (scrollPx / winHeightPx) * 100
-      setScrollProgress(scrolled)
-    }
+      const scrollPx = document.documentElement.scrollTop;
+      const winHeightPx =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (scrollPx / winHeightPx) * 100;
+      setScrollProgress(scrolled);
+    };
 
-    window.addEventListener("scroll", updateScrollProgress)
-    return () => window.removeEventListener("scroll", updateScrollProgress)
-  }, [])
+    window.addEventListener("scroll", updateScrollProgress);
+    return () => window.removeEventListener("scroll", updateScrollProgress);
+  }, []);
 
   // Set dark mode by default
   useEffect(() => {
-    document.documentElement.classList.add("dark")
-  }, [])
+    document.documentElement.classList.add("dark");
+  }, []);
 
   // Intersection Observer for active section
   useEffect(() => {
@@ -62,21 +66,25 @@ export default function Portfolio() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
+            setActiveSection(entry.target.id);
           }
-        })
+        });
       },
-      { threshold: 0.6 },
-    )
+      { threshold: 0.6 }
+    );
 
-    const sections = document.querySelectorAll("section[id]")
-    sections.forEach((section) => observer.observe(section))
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? "dark bg-[#0B132B]" : "bg-white"}`}>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDark ? "dark bg-[#0B132B]" : "bg-white"
+      }`}
+    >
       <ScrollProgress scrollProgress={scrollProgress} />
 
       <Navigation
@@ -90,15 +98,15 @@ export default function Portfolio() {
         scrollToSection={scrollToSection}
         t={t}
       />
-
       <Hero isDark={isDark} t={t} scrollToSection={scrollToSection} />
       <About isDark={isDark} t={t} />
       <Skills isDark={isDark} t={t} />
       <Experience isDark={isDark} t={t} />
       <Projects isDark={isDark} t={t} />
+      <ProjectsSeond />
       <Testimonials isDark={isDark} t={t} />
       <Contact isDark={isDark} t={t} />
       <Footer isDark={isDark} t={t} />
     </div>
-  )
+  );
 }
