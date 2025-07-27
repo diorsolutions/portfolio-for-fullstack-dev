@@ -1,77 +1,80 @@
 export interface TestimonialItem {
-  name: string
-  role: string
-  company: string
-  text: string
+  name: string;
+  role: string;
+  company: string;
+  text: string;
 }
 
 export interface ExperienceItem {
-  title: string
-  company: string
-  period: string
-  description: string
+  title: string;
+  company: string;
+  period: string;
+  description: string;
 }
 
 export interface TranslationType {
   nav: {
-    home: string
-    about: string
-    skills: string
-    experience: string
-    projects: string
-    testimonials: string
-    contact: string
-  }
+    home: string;
+    about: string;
+    skills: string;
+    experience: string;
+    projects: string;
+    testimonials: string;
+    contact: string;
+  };
   hero: {
-    greeting: string
-    name: string
-    title: string
-    subtitle: string
-    cta: string
-  }
+    greeting: string;
+    name: string;
+    title: string;
+    subtitle: string;
+    cta: string;
+  };
   about: {
-    title: string
-    bio: string
-    education: string
-    educationText: string
-    experience: string
-    experienceText: string
-  }
+    title: string;
+    bio: string;
+    education: string;
+    educationText: string;
+    experience: string;
+    experienceText: string;
+  };
   skills: {
-    title: string
-    core: string
-    frameworks: string
-    tools: string
-    advanced: string
-  }
+    title: string;
+    core: string;
+    frameworks: string;
+    tools: string;
+    advanced: string;
+  };
   experience: {
-    title: string
-    current: string
-    items: ExperienceItem[]
-  }
+    title: string;
+    current: string;
+    items: ExperienceItem[];
+  };
   projects: {
-    title: string
-    viewProject: string
-    viewCode: string
-  }
+    title: string;
+    viewProject: string;
+    viewCode: string;
+  };
   testimonials: {
-    title: string
-    items: TestimonialItem[]
-  }
+    title: string;
+    items: TestimonialItem[];
+  };
   contact: {
-    title: string
-    subtitle: string
-    email: string
-    telegram: string
-    github: string
-    linkedin: string
-    twitter: string
-    website: string
-  }
+    title: string;
+    subtitle: string;
+    email: string;
+    instagram: string;
+    telegram: string;
+    github: string;
+    facebook: string;
+    phone: string;
+    linkedin: string;
+    twitter: string;
+    website: string;
+  };
   footer: {
-    copyright: string
-    brand: string
-  }
+    copyright: string;
+    brand: string;
+  };
 }
 
 export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
@@ -125,7 +128,8 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
           title: "Frontend Developer",
           company: "Freelance",
           period: "2022 - 2023",
-          description: "Developed responsive web applications using React, TypeScript, and modern CSS frameworks.",
+          description:
+            "Developed responsive web applications using React, TypeScript, and modern CSS frameworks.",
         },
         {
           title: "Web Developer",
@@ -166,13 +170,17 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     contact: {
       title: "Let's Connect",
-      subtitle: "Ready to bring your ideas to life? Let's discuss your next project!",
+      subtitle:
+        "Ready to bring your ideas to life? Let's discuss your next project!",
       email: "Email",
+      instagram: "Instagram",
       telegram: "Telegram",
       github: "GitHub",
       linkedin: "LinkedIn",
+      facebook: "Facebook",
       twitter: "Twitter/X",
       website: "Website",
+      phone: "Phone",
     },
     footer: {
       copyright: "© 2024 Diyor Olimov. All rights reserved.",
@@ -271,13 +279,17 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     contact: {
       title: "Давайте свяжемся",
-      subtitle: "Готовы воплотить ваши идеи в жизнь? Давайте обсудим ваш следующий проект!",
+      subtitle:
+        "Готовы воплотить ваши идеи в жизнь? Давайте обсудим ваш следующий проект!",
       email: "Электронная почта",
-      telegram: "Telegram",
+      instagram: "инстаграм",
+      telegram: "Телеграмма",
       github: "GitHub",
       linkedin: "LinkedIn",
-      twitter: "Twitter/X",
+      facebook: "фейсбук",
+      twitter: "Твиттер/X",
       website: "Веб-сайт",
+      phone: "Телефон",
     },
     footer: {
       copyright: "© 2024 Диёр Олимов. Все права защищены.",
@@ -298,7 +310,8 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       greeting: "Salom, men",
       name: "Diyor Olimov",
       title: "Senior Frontend Dasturchi",
-      subtitle: "Zamonaviy JavaScript freymvorklari va ilg'or texnologiyalar bilan ajoyib raqamli tajribalar yarataman",
+      subtitle:
+        "Zamonaviy JavaScript freymvorklari va ilg'or texnologiyalar bilan ajoyib raqamli tajribalar yarataman",
       cta: "Bog'lanish",
     },
     about: {
@@ -375,10 +388,14 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     contact: {
       title: "Keling bog'lanaylik",
-      subtitle: "G'oyalaringizni hayotga tatbiq etishga tayyormisiz? Keyingi loyihangizni muhokama qilaylik!",
+      subtitle:
+        "G'oyalaringizni hayotga tatbiq etishga tayyormisiz? Keyingi loyihangizni muhokama qilaylik!",
       email: "Elektron pochta",
       telegram: "Telegram",
+      instagram: "Instagram",
       github: "GitHub",
+      facebook: "facebook",
+      phone: "Telefon",
       linkedin: "LinkedIn",
       twitter: "Twitter/X",
       website: "Veb-sayt",
@@ -388,4 +405,4 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       brand: "diorsolutions tomonidan ❤️ bilan yaratilgan",
     },
   },
-}
+};
