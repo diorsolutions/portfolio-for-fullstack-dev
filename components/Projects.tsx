@@ -1,30 +1,34 @@
-"use client"
+"use client";
 
-import { ExternalLink, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
-import { projectsData } from "@/lib/data"
+import { ExternalLink, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import { projectsData } from "@/lib/data";
 import "./ProjectsProps.css";
 
 interface ProjectsProps {
-  isDark: boolean
-  t: any
+  isDark: boolean;
+  t: any;
 }
 
 export default function Projects({ isDark, t }: ProjectsProps) {
   return (
     <section
       id="projects"
-      className="flex items-center py-20 px-4"
+      className="flex items-center pb-36"
       style={{
         scrollSnapAlign: "start",
-        height: "100vh",
-        minHeight: "100vh",
+        height: "95vh !important",
+        minHeight: "60vh",
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <h2 className={`text-4xl font-bold text-center mb-16 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
+        <h2
+          className={`text-4xl font-bold text-center mb-16 ${
+            isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
+          }`}
+        >
           {t.projects.title}
         </h2>
 
@@ -44,7 +48,8 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                   alt={project.title}
                   width={600}
                   height={500}
-                  className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                  className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 rounded-lg"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
@@ -78,10 +83,18 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                 )}
               </div>
               <CardContent className="p-6">
-                <h3 className={`text-xl font-semibold mb-3 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}>
+                <h3
+                  className={`text-xl font-semibold mb-3 ${
+                    isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
+                  }`}
+                >
                   {project.title}
                 </h3>
-                <p className={`mb-4 ${isDark ? "text-gray-300" : "text-gray-600"} line-clamp-2`}>
+                <p
+                  className={`mb-4 ${
+                    isDark ? "text-gray-300" : "text-gray-600"
+                  } line-clamp-2`}
+                >
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -104,5 +117,5 @@ export default function Projects({ isDark, t }: ProjectsProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,32 +1,47 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import type { TranslationType } from "@/lib/translations"
+import { Button } from "@/components/ui/button";
+import type { TranslationType } from "@/lib/translations";
 
 interface HeroProps {
-  isDark: boolean
-  t: TranslationType
-  scrollToSection: (section: string) => void
+  isDark: boolean;
+  t: TranslationType;
+  scrollToSection: (section: string) => void;
 }
 
 export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
+    <section
+      id="home"
+      className="min-h-screen flex items-center justify-center px-4 pt-16"
+    >
       <div className="max-w-4xl mx-auto text-center">
         <div className="animate-fade-in-up">
-          <p className={`text-lg mb-4 ${isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"} animate-pulse`}>
+          <p
+            className={`text-lg mb-4 ${
+              isDark ? "text-[#6FFFE9]" : "text-blue-900"
+            } animate-pulse`}
+          >
             {t.hero.greeting}
           </p>
           <h1
-            className={`text-5xl md:text-7xl font-bold mb-6 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"} animate-gradient-text`}
+            className={`text-5xl md:text-7xl font-bold mb-6 ${
+              isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
+            } animate-gradient-text`}
           >
             {t.hero.name}
           </h1>
-          <h2 className={`text-2xl md:text-3xl mb-8 ${isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"}`}>
+          <h2
+            className={`text-2xl md:text-3xl mb-8 ${
+              isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"
+            }`}
+          >
             {t.hero.title}
           </h2>
           <p
-            className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
+            className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed ${
+              isDark ? "text-gray-300" : "text-gray-600"
+            }`}
           >
             {t.hero.subtitle}
           </p>
@@ -43,5 +58,5 @@ export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

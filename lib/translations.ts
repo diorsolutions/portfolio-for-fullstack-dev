@@ -90,7 +90,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     hero: {
       greeting: "Hello, I'm",
-      name: "Diyor Olimov",
+      name: "Dior Olimov",
       title: "Senior Frontend Developer",
       subtitle:
         "Crafting exceptional digital experiences with modern JavaScript frameworks and cutting-edge technologies",
