@@ -73,7 +73,6 @@ export interface TranslationType {
   };
   footer: {
     copyright: string;
-    brand: string;
   };
 }
 
@@ -184,7 +183,6 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     footer: {
       copyright: "© 2024 Diyor Olimov. All rights reserved.",
-      brand: "Built with ❤️ by diorsolutions",
     },
   },
   ru: {
@@ -293,7 +291,6 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     footer: {
       copyright: "© 2024 Диёр Олимов. Все права защищены.",
-      brand: "Создано с ❤️ от diorsolutions",
     },
   },
   uz: {
@@ -402,7 +399,6 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     footer: {
       copyright: "© 2024 Diyor Olimov. Barcha huquqlar himoyalangan.",
-      brand: "diorsolutions tomonidan ❤️ bilan yaratilgan",
     },
   },
 };

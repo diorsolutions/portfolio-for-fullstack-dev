@@ -12,71 +12,76 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { translations } from "@/lib/translations";
-// import DarkVeil from "../yes/DarkVeil/DarkVeil"
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(true); // Default to dark mode
-  const [language, setLanguage] = useState<"en" | "ru" | "uz">("en");
+  // isDark va language holatlarini boshlang'ich qiymat sifatida undefined qilib belgilaymiz.
+  // Bu serverda render qilinganda ularning qiymati aniq bo'lmasligini ta'minlaydi.
+  const [isDark, setIsDark] = useState<boolean | undefined>(undefined);
+  const [language, setLanguage] = useState<"en" | "ru" | "uz" | undefined>(
+    undefined
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  const t = translations[language];
+  const t = translations[language || "en"]; // Til hali yuklanmagan bo'lsa, 'en' ni default qilib ishlatamiz
 
   // Theme toggle
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
+    setIsDark((prevIsDark) => !prevIsDark);
   };
 
-  // Scroll to section
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+  // Scroll to section function
+  const scrollToSection = (section: string) => {
+    setActiveSection(section);
+    const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setActiveSection(sectionId);
-      setIsMenuOpen(false);
     }
   };
 
-  // Scroll progress
+  // Komponent birinchi marta yuklanganda (hydration tugagandan so'ng) localStorage'dan tema va tilni yuklash
   useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollPx = document.documentElement.scrollTop;
-      const winHeightPx =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scrolled = (scrollPx / winHeightPx) * 100;
-      setScrollProgress(scrolled);
-    };
+    if (typeof window !== "undefined") {
+      // Temani yuklash
+      const savedTheme = localStorage.getItem("theme");
+      setIsDark(savedTheme === "dark"); // isDark endi true yoki false bo'ladi
 
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
+      // Tilni yuklash
+      const savedLanguage = localStorage.getItem("language");
+      setLanguage((savedLanguage as "en" | "ru" | "uz") || "en"); // language endi 'en', 'ru' yoki 'uz' bo'ladi
+    }
+  }, []); // Bu useEffect faqat bir marta ishga tushadi (komponent mount bo'lganda)
 
-  // Set dark mode by default
+  // isDark holati o'zgarganda localStorage'ga saqlash va HTML klassini yangilash
   useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
+    if (typeof window !== "undefined" && isDark !== undefined) {
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    }
+  }, [isDark]); // Bu useEffect isDark o'zgarganda ishga tushadi
 
-  // Intersection Observer for active section
+  // language holati o'zgarganda localStorage'ga saqlash
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 }
+    if (typeof window !== "undefined" && language !== undefined) {
+      localStorage.setItem("language", language);
+    }
+  }, [language]); // Bu useEffect language o'zgarganda ishga tushadi
+
+  // Agar isDark yoki language hali yuklanmagan bo'lsa, loading holatini ko'rsatamiz
+  // Bu hydration errorni oldini oladi, chunki serverda ham, clientda ham bir xil "loading" UI ko'rsatiladi
+  if (isDark === undefined || language === undefined) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#0B132B] text-white">
+        Yuklanmoqda...
+      </div>
     );
-
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  }
 
   return (
     <div

@@ -10,7 +10,7 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
   return (
     <section
       id="testimonials"
-      className={`min-h-screen flex items-center py-20 px-4 ${
+      className={`h-auto flex items-center py-20 px-4 ${
         isDark ? "bg-[#1C2541]" : "bg-gray-50"
       }`}
     >
