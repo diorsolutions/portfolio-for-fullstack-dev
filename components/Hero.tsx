@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import type { TranslationType } from "@/lib/translations";
-
 interface HeroProps {
   isDark: boolean;
   t: TranslationType;
@@ -25,7 +24,7 @@ export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
             {t.hero.greeting}
           </p>
           <h1
-            className={`text-5xl md:text-7xl font-bold mb-6 ${
+            className={`text-5xl md:text-7xl md:animate-gradient-text font-bold mb-6 ${
               isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
             } animate-gradient-text`}
           >
@@ -39,7 +38,7 @@ export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
             {t.hero.title}
           </h2>
           <p
-            className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed ${
+            className={`text-sm md:text-lg xl:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed ${
               isDark ? "text-gray-300" : "text-gray-600"
             }`}
           >
@@ -47,7 +46,7 @@ export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
           </p>
           <Button
             onClick={() => scrollToSection("contact")}
-            className={`px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+            className={`px-8 py-3 text-lg font-semibold rounded-full transition-all duration-500 transform hover:scale-105 hover:shadow-lg ${
               isDark
                 ? "bg-[#5BC0BE] text-[#0B132B] hover:bg-[#6FFFE9] shadow-[#5BC0BE]/20"
                 : "bg-[#3A506B] text-white hover:bg-[#1C2541] shadow-[#3A506B]/20"

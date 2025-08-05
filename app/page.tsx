@@ -12,7 +12,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { translations } from "@/lib/translations";
-import ProjectsSeond from "@/components/ProjectsSeond";
 // import DarkVeil from "../yes/DarkVeil/DarkVeil"
 
 export default function Portfolio() {
@@ -103,7 +102,6 @@ export default function Portfolio() {
       <Skills isDark={isDark} t={t} />
       <Experience isDark={isDark} t={t} />
       <Projects isDark={isDark} t={t} />
-      <ProjectsSeond />
       <Testimonials isDark={isDark} t={t} />
       <Contact isDark={isDark} t={t} />
       <Footer isDark={isDark} t={t} />

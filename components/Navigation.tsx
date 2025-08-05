@@ -60,6 +60,7 @@ export default function Navigation({
               alt="logo portfolio-logo developer-portfolio "
               width={160}
               height={160}
+              priority
             />
           </div>
 

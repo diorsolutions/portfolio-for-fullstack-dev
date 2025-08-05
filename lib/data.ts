@@ -1,26 +1,97 @@
+// import HtmlSvg from "../public/skills/html.svg";
+
 export const skillsData = {
   core: [
-    { name: "HTML5 / CSS3 / Tailwind", level: 95, icon: "🎨" },
-    { name: "JavaScript (ES6+)", level: 98, icon: "⚡" },
-    { name: "TypeScript", level: 92, icon: "🔷" },
+    {
+      name: "HTML5",
+      level: 95,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg",
+      alt: "HTML5 logo",
+    },
+    {
+      name: "CSS3",
+      level: 95,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+      alt: "CSS3 logo",
+    },
+    {
+      name: "JavaScript",
+      level: 98,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+      alt: "JavaScript logo",
+    },
+    {
+      name: "TypeScript",
+      level: 92,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+      alt: "TypeScript logo",
+    },
   ],
   frameworks: [
-    { name: "React.js", level: 95, icon: "⚛️" },
-    { name: "Next.js", level: 90, icon: "▲" },
-    { name: "Vue.js", level: 85, icon: "💚" },
-    { name: "Svelte", level: 80, icon: "🧡" },
+    {
+      name: "React.js",
+      level: 95,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+      alt: "React.js logo",
+    },
+    {
+      name: "Next.js",
+      level: 90,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+      alt: "Next.js logo",
+    },
+    {
+      name: "Vue.js",
+      level: 85,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+      alt: "Vue.js logo",
+    },
+    {
+      name: "Jest",
+      level: 90,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
+      alt: "Jest logo",
+    },
+    {
+      name: "Svelte",
+      level: 80,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/svelte/svelte-original.svg",
+      alt: "Svelte logo",
+    },
   ],
   tools: [
-    { name: "Webpack / Vite", level: 88, icon: "📦" },
-    { name: "Docker", level: 85, icon: "🐳" },
-    { name: "GraphQL", level: 82, icon: "🔗" },
-    { name: "Jest / Testing Library", level: 90, icon: "🧪" },
+    {
+      name: "Webpack",
+      level: 88,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg",
+      alt: "Webpack logo",
+    },
+    {
+      name: "Docker",
+      level: 85,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+      alt: "Docker logo",
+    },
+    {
+      name: "GraphQL",
+      level: 82,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+      alt: "GraphQL logo",
+    },
   ],
   advanced: [
-    { name: "Micro-frontends", level: 85, icon: "🏗️" },
-    { name: "Performance Optimization", level: 92, icon: "🚀" },
-    { name: "PWA Development", level: 88, icon: "📱" },
-    { name: "Web Accessibility (a11y)", level: 90, icon: "♿" },
+    {
+      name: "MongoDB",
+      level: 92,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+      alt: "MongoDB logo",
+    },
+    {
+      name: "Nest.js",
+      level: 92,
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+      alt: "Nest.js logo",
+    },
   ],
 };
 
@@ -34,7 +105,7 @@ export const projectsData = [
     image: "/projects/e-commerce.jpg",
     tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
     liveUrl: "https://diorsolutions.site",
-    codeUrl: "https://github.com/diorsolutions",
+    codeUrl: "https://github.com/diorsolutions/mern-stack-e-commerce",
     featured: true,
   },
   {
@@ -45,7 +116,7 @@ export const projectsData = [
     image: "/projects/ui-saas.jpg",
     tech: ["React", "D3.js", "Node.js", "MongoDB", "Socket.io"],
     liveUrl: "https://diorsolutions.site",
-    codeUrl: "https://github.com/diorsolutions",
+    codeUrl: "https://github.com/diorsolutions/saas-dashboard",
     featured: true,
   },
   // {
