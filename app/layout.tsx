@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` select-none ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SplashCursor />
         {children}
