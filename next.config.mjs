@@ -1,4 +1,5 @@
-// next.config.mjs (ESM sintaksis bilan)
+// next.config.mjs
+
 const nextConfig = {
   output: "export",
   trailingSlash: true,
@@ -12,6 +13,11 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: true,
+
+  experimental: {
+    legacyBrowsers: false,
+  },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -22,4 +28,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig; // ⛳️ ESM sintaksis
+export default nextConfig;
