@@ -3,8 +3,10 @@
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { TranslationType } from "@/lib/translations";
-import Image from "next/image";
 import logo from "/public/logo.png";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface NavigationProps {
   isDark: boolean;
@@ -38,6 +40,51 @@ export default function Navigation({
     "testimonials",
     "contact",
   ];
+  const router = useRouter();
+
+  const [showLogo, setShowLogo] = useState(false);
+  const [showMenuItems, setShowMenuItems] = useState<boolean[]>([]);
+  const [showRightPanel, setShowRightPanel] = useState(false);
+
+  useEffect(() => {
+    const timers: NodeJS.Timeout[] = [];
+
+    // Logo chiqishi
+    const logoTimer = setTimeout(() => {
+      setShowLogo(true);
+    }, 500);
+    timers.push(logoTimer);
+
+    // Nav itemlar birin-ketin chiqishi
+    sections.forEach((_, index) => {
+      const menuTimer = setTimeout(() => {
+        setShowMenuItems((prev) => {
+          const updated = [...prev];
+          updated[index] = true;
+          return updated;
+        });
+      }, 1000 + index * 100);
+      timers.push(menuTimer);
+    });
+
+    // Right panel chiqishi
+    const rightTimer = setTimeout(() => {
+      setShowRightPanel(true);
+    }, 1000 + sections.length * 100 + 300);
+    timers.push(rightTimer);
+
+    return () => {
+      timers.forEach(clearTimeout);
+    };
+  }, []);
+
+  const handleClick = () => {
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
 
   return (
     <nav
@@ -51,11 +98,12 @@ export default function Navigation({
         <div className="flex justify-between items-center h-14 py-10 cursor-pointer">
           {/* Logo */}
           <div
-            className={`font-bold text-xl ${
-              isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
-            }`}
+            className={`font-bold text-xl transition-opacity duration-700 ${
+              showLogo ? "opacity-100" : "opacity-0"
+            } ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}
           >
             <Image
+              onClick={handleClick}
               src={logo}
               alt="logo portfolio-logo developer-portfolio "
               width={160}
@@ -66,11 +114,13 @@ export default function Navigation({
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {sections.map((section) => (
+            {sections.map((section, index) => (
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className={`transition-colors duration-200 ${
+                className={`transition-opacity duration-500 ${
+                  showMenuItems[index] ? "opacity-100" : "opacity-0"
+                } ${
                   activeSection === section
                     ? isDark
                       ? "text-[#5BC0BE]"
@@ -86,7 +136,11 @@ export default function Navigation({
           </div>
 
           {/* Theme and Language Controls */}
-          <div className="flex items-center space-x-4">
+          <div
+            className={`flex items-center space-x-4 transition-opacity duration-700 ${
+              showRightPanel ? "opacity-100" : "opacity-0"
+            }`}
+          >
             <Button
               aria-label="Toggle theme"
               variant="ghost"

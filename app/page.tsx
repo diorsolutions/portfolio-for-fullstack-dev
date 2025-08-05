@@ -77,7 +77,7 @@ export default function Portfolio() {
   // Bu hydration errorni oldini oladi, chunki serverda ham, clientda ham bir xil "loading" UI ko'rsatiladi
   if (isDark === undefined || language === undefined) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0B132B] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#0B132B] text-white text-2xl">
         Yuklanmoqda...
       </div>
     );

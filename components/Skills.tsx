@@ -116,7 +116,7 @@ export default function Skills({ isDark, t }: SkillsProps) {
                   : "bg-gray-50 shadow-[3px_0px_10px_2px_rgba(0,0,0,0.1),0px_0px_10px_1px_rgba(45,78,255,0.15)] rounded-lg"
               }`}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:gap-y-9 xl:grid-cols-7 gap-y-7 gap-x-4 justify-items-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:gap-y-7 xl:grid-cols-7 gap-y-5 gap-x-7 justify-items-center">
                 {skillCategories.map((category) =>
                   category.data.map((skill, index) => (
                     <div

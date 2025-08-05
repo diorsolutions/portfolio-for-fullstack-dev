@@ -5,6 +5,7 @@ import {
   MessageCircle,
   Github,
   Linkedin,
+  MessageCirclePlus,
   Twitter,
   ExternalLink,
   Facebook,
@@ -24,7 +25,7 @@ export default function Contact({ isDark, t }: ContactProps) {
     {
       icon: Mail,
       title: t.contact.email,
-      value: "diorsolutions@gmail.com",
+      value: "diorsolutions@",
       url: "mailto:diorsolutions@gmail.com",
     },
     {
@@ -44,6 +45,12 @@ export default function Contact({ isDark, t }: ContactProps) {
       title: t.contact.telegram,
       value: "@diorsolutions",
       url: "https://t.me/diorsolutions",
+    },
+    {
+      icon: MessageCirclePlus,
+      title: t.contact.whatsapp,
+      value: "+9989186845xx",
+      url: "https://wa.me/998918684546",
     },
     {
       icon: Github,
@@ -72,14 +79,14 @@ export default function Contact({ isDark, t }: ContactProps) {
     {
       icon: Phone,
       title: t.contact.phone,
-      value: "+99 8 91 868 45 xx",
+      value: "+9989186845xx",
       url: "tel:+998918684546",
     },
   ];
 
   return (
-    <section id="contact" className="min-h-screen flex items-center py-20 px-4">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className="h-auto flex items-center py-20 px-4">
+      <div className="max-w-7xl mx-auto text-center">
         <h2
           className={`text-4xl font-bold mb-8 ${
             isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
@@ -95,11 +102,11 @@ export default function Contact({ isDark, t }: ContactProps) {
           {t.contact.subtitle}
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {contactItems.map((item, index) => (
             <Card
               key={index}
-              className={`p-6 transition-all duration-300 hover:scale-105 cursor-pointer ${
+              className={`p-9 transition-all duration-300 hover:scale-105 cursor-pointer ${
                 isDark
                   ? "bg-[#1C2541] border-[#3A506B] hover:border-[#5BC0BE] hover:shadow-lg hover:shadow-[#5BC0BE]/20"
                   : "bg-white border-gray-200 hover:border-[#3A506B] hover:shadow-lg"

@@ -99,7 +99,7 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className={`px-3 py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
+                      className={`cursor-pointer px-3 py-1 text-xs rounded-full transition-all duration-200 hover:scale-105 ${
                         isDark
                           ? "bg-[#3A506B] text-[#6FFFE9] hover:bg-[#5BC0BE] hover:text-[#0B132B]"
                           : "bg-[#5BC0BE] text-[#0B132B] hover:bg-[#3A506B] hover:text-white"

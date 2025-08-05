@@ -66,6 +66,7 @@ export interface TranslationType {
     telegram: string;
     github: string;
     facebook: string;
+    whatsapp: string;
     phone: string;
     linkedin: string;
     twitter: string;
@@ -176,6 +177,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       telegram: "Telegram",
       github: "GitHub",
       linkedin: "LinkedIn",
+      whatsapp: "Whatsapp",
       facebook: "Facebook",
       twitter: "Twitter/X",
       website: "Website",
@@ -283,6 +285,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       instagram: "инстаграм",
       telegram: "Телеграмма",
       github: "GitHub",
+      whatsapp: "Bатсап",
       linkedin: "LinkedIn",
       facebook: "фейсбук",
       twitter: "Твиттер/X",
@@ -391,6 +394,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       telegram: "Telegram",
       instagram: "Instagram",
       github: "GitHub",
+      whatsapp: "Whatsapp",
       facebook: "facebook",
       phone: "Telefon",
       linkedin: "LinkedIn",
