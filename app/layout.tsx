@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Diorsolutions | JavaScript Software Engineer Portfolio",
+  title: "diorsolutions | JavaScript Software Engineer Portfolio",
   description:
     "Portfolio of Dior Olimov, a frontend developer mastering React, Next.js, and creative web interfaces.",
   keywords: [
