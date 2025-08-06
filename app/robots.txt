@@ -1,33 +1,19 @@
-// app/robots.ts
-import { MetadataRoute } from 'next'
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+Disallow: *.json
+Disallow: /temp/
 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/admin/',
-          '/_next/',
-          '/private/',
-          '*.json',
-          '/temp/',
-        ],
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: '/api/',
-      },
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: '/api/',
-      },
-    ],
-    sitemap: 'https://diorsolutions.site/sitemap.xml',
-    host: 'https://diorsolutions.site',
-  }
-}
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://diorsolutions.site/sitemap.xml
+Host: https://diorsolutions.site
