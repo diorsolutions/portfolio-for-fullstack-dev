@@ -226,6 +226,7 @@ export default function RootLayout({
       >
         <SplashCursor />
         {children}
+        
       </body>
     </html>
   );
