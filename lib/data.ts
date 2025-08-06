@@ -119,26 +119,26 @@ export const projectsData = [
     codeUrl: "https://github.com/diorsolutions/saas-dashboard",
     featured: true,
   },
-  // {
-  //   id: 3,
-  //   title: "AI-Powered Chat App",
-  //   description:
-  //     "Intelligent chat application with AI integration, real-time messaging, and advanced user experience",
-  //   image: "/projects/chat.jpg",
-  //   tech: ["React", "OpenAI API", "WebSocket", "Redis", "Docker"],
-  //   liveUrl: "https://diorsolutions.site",
-  //   codeUrl: "https://github.com/diorsolutions",
-  //   featured: true,
-  // },
-  // {
-  //   id: 4,
-  //   title: "Professional Dentists CMS Dashboard",
-  //   description:
-  //     "Professional trading interface with real-time market data, advanced charting, and portfolio management",
-  //   image: "/projects/dentist.png",
-  //   tech: ["Vue.js", "TradingView", "WebSocket", "Express", "JWT"],
-  //   liveUrl: "https://diorsolutions.site",
-  //   codeUrl: "https://github.com/diorsolutions",
-  //   featured: false,
-  // },
+  {
+    id: 3,
+    title: "AI-Powered Chat App",
+    description:
+      "Intelligent chat application with AI integration, real-time messaging, and advanced user experience",
+    image: "/projects/chat.jpg",
+    tech: ["React", "OpenAI API", "WebSocket", "Redis", "Docker"],
+    liveUrl: "https://fs-chat-app-qx4l.onrender.com/",
+    codeUrl: "https://github.com/diorsolutions/mern-chat-application",
+    featured: true,
+  },
+  {
+    id: 4,
+    title: "Professional Dentists CMS Dashboard",
+    description:
+      "Professional trading interface with real-time market data, advanced charting, and portfolio management",
+    image: "/projects/dentist.png",
+    tech: ["Vue.js", "TradingView", "WebSocket", "Express", "JWT"],
+    liveUrl: "https://dentist-cms-production.up.railway.app",
+    codeUrl: "https://github.com/diorsolutions/dentist-cms",
+    featured: false,
+  },
 ];

@@ -1,0 +1,33 @@
+// app/robots.ts
+import { MetadataRoute } from 'next'
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/admin/',
+          '/_next/',
+          '/private/',
+          '*.json',
+          '/temp/',
+        ],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: '/api/',
+      },
+    ],
+    sitemap: 'https://diorsolutions.site/sitemap.xml',
+    host: 'https://diorsolutions.site',
+  }
+}
