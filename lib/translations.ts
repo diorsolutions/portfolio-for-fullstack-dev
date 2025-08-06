@@ -184,7 +184,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       phone: "Phone",
     },
     footer: {
-      copyright: "© 2024 Diyor Olimov. All rights reserved.",
+      copyright: `© ${new Date().getFullYear()} Diyor Olimov. All rights reserved.`,
     },
   },
   ru: {
@@ -293,7 +293,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       phone: "Телефон",
     },
     footer: {
-      copyright: "© 2024 Диёр Олимов. Все права защищены.",
+      copyright: `© ${new Date().getFullYear()} Диёр Олимов. Все права защищены.`,
     },
   },
   uz: {
@@ -402,7 +402,7 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       website: "Veb-sayt",
     },
     footer: {
-      copyright: "© 2024 Diyor Olimov. Barcha huquqlar himoyalangan.",
+      copyright: `© ${new Date().getFullYear()} Diyor Olimov. Barcha huquqlar himoyalangan.`,
     },
   },
 };
