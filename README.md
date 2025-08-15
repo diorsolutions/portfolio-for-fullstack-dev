@@ -33,7 +33,18 @@ Check it out here: **[diorsolutions.site](https://diorsolutions.site)**
 
 ## 🚀 Getting Started
 
-First, run the development server:
+First, Clone this repo to your local:
+
+```bash
+git clone https://github.com/diorsolutions/portfolio
+cd {your-project-folder}
+
+npm install
+# or
+pnpm install
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
