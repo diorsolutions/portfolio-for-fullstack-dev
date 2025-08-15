@@ -37,17 +37,24 @@ First, Clone this repo to your local:
 
 ```bash
 
+# get source code
 git clone https://github.com/diorsolutions/portfolio
+
+# select your local cloned folder
 cd {your-project-folder}
 
+# install packages & modules
 npm install
-# or
+
+# if you use the pnpm to intstall packages & modules
 pnpm install
+
 ```
 
 Second, run the development server:
 
 ```bash
+
 npm run dev
 # or
 yarn dev
@@ -55,6 +62,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
+
 ```
 Open http://localhost:3000 with your browser to see the result.
 
