@@ -21,6 +21,16 @@ Check it out here: **[diorsolutions.site](https://diorsolutions.site)**
 
 ---
 
+## Let's see 😉
+
+### Pretty cursor effects
+<img width="1908" height="957" alt="image" src="https://github.com/user-attachments/assets/d66755a2-6b87-489e-ab20-9b31a7d55c0d" />
+
+### Light + dark mode & with three different langs translations
+<img width="1912" height="970" alt="image" src="https://github.com/user-attachments/assets/8489bb20-8327-47a7-b36c-b28a237d69cf" />
+
+---
+
 ## 🚀 Getting Started
 
 First, run the development server:
