@@ -97,28 +97,28 @@ export const skillsData = {
 
 // Enhanced Projects data with images
 export const projectsData = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "Full-stack e-commerce solution with advanced features like real-time inventory, payment processing, and admin dashboard",
-    image: "/projects/e-commerce.jpg",
-    tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
-    liveUrl: "https://diorsolutions.site",
-    codeUrl: "https://github.com/diorsolutions/mern-stack-e-commerce",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "SaaS Dashboard",
-    description:
-      "Modern analytics dashboard with real-time data visualization, user management, and subscription handling",
-    image: "/projects/ui-saas.jpg",
-    tech: ["React", "D3.js", "Node.js", "MongoDB", "Socket.io"],
-    liveUrl: "https://diorsolutions.site",
-    codeUrl: "https://github.com/diorsolutions/saas-dashboard",
-    featured: true,
-  },
+  // {
+  //   id: 1,
+  //   title: "E-Commerce Platform",
+  //   description:
+  //     "Full-stack e-commerce solution with advanced features like real-time inventory, payment processing, and admin dashboard",
+  //   image: "/projects/e-commerce.jpg",
+  //   tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
+  //   liveUrl: "https://diorsolutions.site",
+  //   codeUrl: "https://github.com/diorsolutions/mern-stack-e-commerce",
+  //   featured: true,
+  // },
+  // {
+  //   id: 2,
+  //   title: "SaaS Dashboard",
+  //   description:
+  //     "Modern analytics dashboard with real-time data visualization, user management, and subscription handling",
+  //   image: "/projects/ui-saas.jpg",
+  //   tech: ["React", "D3.js", "Node.js", "MongoDB", "Socket.io"],
+  //   liveUrl: "https://diorsolutions.site",
+  //   codeUrl: "https://github.com/diorsolutions/saas-dashboard",
+  //   featured: true,
+  // },
   {
     id: 3,
     title: "AI-Powered Chat App",

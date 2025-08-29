@@ -21,6 +21,12 @@
         "name": "next"
       }
     ],
+    "types": [
+      "react",
+      "react-dom",
+      "next",
+      "next/image-types/global"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [

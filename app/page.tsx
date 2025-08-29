@@ -73,12 +73,25 @@ export default function Portfolio() {
     }
   }, [language]); // Bu useEffect language o'zgarganda ishga tushadi
 
-  // Agar isDark yoki language hali yuklanmagan bo'lsa, loading holatini ko'rsatamiz
-  // Bu hydration errorni oldini oladi, chunki serverda ham, clientda ham bir xil "loading" UI ko'rsatiladi
+  // Scroll progressni yangilash
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   if (isDark === undefined || language === undefined) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0B132B] text-white text-2xl">
-        Yuklanmoqda...
+        {t.loading.loadings}
       </div>
     );
   }

@@ -75,10 +75,16 @@ export interface TranslationType {
   footer: {
     copyright: string;
   };
+  loading: {
+    loadings: string;
+  };
 }
 
 export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
   en: {
+    loading: {
+      loadings: "Loading...",
+    },
     nav: {
       home: "Home",
       about: "About",
@@ -188,6 +194,9 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
   },
   ru: {
+    loading: {
+      loadings: "Падаждите...",
+    },
     nav: {
       home: "Главная",
       about: "Обо мне",
@@ -297,6 +306,9 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
   },
   uz: {
+    loading: {
+      loadings: "Iltimos kuting...",
+    },
     nav: {
       home: "Bosh sahifa",
       about: "Men haqimda",
