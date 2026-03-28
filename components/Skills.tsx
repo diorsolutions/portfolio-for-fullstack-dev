@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import skillCategories from "../lib/skillCategories";
 import type { TranslationType } from "@/lib/translations";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface SkillsProps {
   isDark: boolean;
@@ -12,212 +12,193 @@ interface SkillsProps {
 }
 
 export default function Skills({ isDark, t }: SkillsProps) {
-  const myDivRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("all");
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [itemsToShow, setItemsToShow] = useState(14);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  useEffect(() => {
-    const calculateItemsToShow = () => {
-      if (typeof window === "undefined") return 14;
-      const width = window.innerWidth;
-      if (width < 640) return 6;
-      if (width < 768) return 9;
-      if (width < 1024) return 12;
-      return 14;
-    };
+  // Memoize filtered skills to prevent jitter
+  const filteredSkills = useMemo(() => {
+    return skillCategories
+      .flatMap(cat => cat.data.map(skill => ({ ...skill, category: cat.key })))
+      .filter(skill => activeTab === "all" || skill.category === activeTab);
+  }, [activeTab]);
 
-    setItemsToShow(calculateItemsToShow());
-
-    const handleResize = () => {
-      if (!isExpanded) {
-        setItemsToShow(calculateItemsToShow());
-      }
-    };
-
-    let timeoutId: NodeJS.Timeout;
-    const debouncedResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleResize, 150);
-    };
-
-    window.addEventListener("resize", debouncedResize);
-    return () => {
-      window.removeEventListener("resize", debouncedResize);
-      clearTimeout(timeoutId);
-    };
-  }, [isExpanded]);
-
-  const getFilteredSkills = () => {
-    let globalIndex = 0;
-    const allSkills = skillCategories
-      .map((category) =>
-        category.data
-          .filter((skill) => activeTab === "all" || category.key === activeTab)
-          .map((skill) => ({
-            ...skill,
-            categoryKey: category.key,
-            globalIndex: globalIndex++,
-          }))
-      )
-      .flat();
-    return allSkills;
-  };
-
-  const filteredSkills = getFilteredSkills();
-  const hasMoreSkills = filteredSkills.length > itemsToShow;
-  const hiddenSkillsCount = filteredSkills.length - itemsToShow;
-  const skillsToDisplay = isExpanded ? filteredSkills : filteredSkills.slice(0, itemsToShow);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0, scale: 0.9, filter: "blur(4px)" },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      scale: 1, 
-      filter: "blur(0px)",
-      transition: { 
-        duration: 0.5, 
-        ease: [0.16, 1, 0.3, 1] as any
-      } 
-    },
-  };
+  const tabs = [
+    { id: "all", label: "All Tech" },
+    { id: "frontend", label: "Frontend", color: "#6FFFE9" },
+    { id: "backend", label: "Backend", color: "#5BC0BE" },
+    { id: "design", label: "Design", color: "#BD93F9" },
+    { id: "wordpress", label: "WordPress", color: "#21759b" }
+  ];
 
   return (
-    <div className="h-screen pt-16 pb-6 px-4 flex flex-col items-center justify-center overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full">
-        <motion.h2 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className={`text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-6 md:mb-8 ${isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"}`}
-        >
-          {t.skills.title}
-        </motion.h2>
+    <div className={`h-screen w-full relative overflow-hidden flex flex-col items-center justify-start pt-24 md:pt-[12vh] transition-colors duration-500 ${
+      isDark ? "bg-[#0B132B]" : "bg-gray-50"
+    }`}>
+      {/* Immersive Tech Background */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className={`absolute top-[20%] right-[10%] w-[30%] h-[30%] rounded-full blur-[150px] ${isDark ? "bg-purple-600" : "bg-purple-200"}`} />
+        <div className={`absolute bottom-[10%] left-[5%] w-[40%] h-[40%] rounded-full blur-[150px] ${isDark ? "bg-[#6FFFE9]" : "bg-emerald-100"}`} />
+      </div>
 
-        {/* Tab Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 w-full px-2">
-          {["all", "frontend", "backend", "wordpress", "design"].map((tab) => (
-            <motion.button
-              key={tab}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                setActiveTab(tab);
-                setIsExpanded(false);
-              }}
-              className={`px-4 sm:px-6 md:px-8 py-2 rounded-xl capitalize text-sm font-bold transition-all duration-300 border shadow-md relative overflow-hidden group ${
-                activeTab === tab
-                  ? isDark
-                    ? "bg-[#6FFFE9] text-[#0B132B] border-[#6FFFE9] shadow-[#6FFFE9]/30"
-                    : "bg-[#0B132B] text-white border-[#0B132B] shadow-[#0B132B]/30"
-                  : isDark
-                    ? "bg-[#1C2541]/40 text-gray-400 border-[#3A506B]/50 hover:text-[#6FFFE9] hover:border-[#6FFFE9]/50"
-                    : "bg-white text-gray-600 border-gray-100 hover:text-[#0B132B] hover:border-gray-300 shadow-sm"
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
+        {/* Header with Float Animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="text-center mb-10 md:mb-16"
+        >
+          <motion.div 
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className={`inline-block mb-4 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.4em] ${
+              isDark ? "bg-[#6FFFE9]/10 text-[#6FFFE9]" : "bg-[#3A506B]/10 text-[#3A506B]"
+            }`}
+          >
+            Capabilities
+          </motion.div>
+          <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black ${isDark ? "text-white tracking-tighter" : "text-[#0B132B]"}`}>
+            {t.skills.title}
+          </h2>
+        </motion.div>
+
+        {/* Premium Tab Control */}
+        <div className={`flex flex-wrap justify-center gap-2 p-2 rounded-3xl mb-12 backdrop-blur-md border ${
+          isDark ? "bg-white/5 border-white/10" : "bg-gray-100/50 border-gray-200"
+        }`}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative px-6 py-3 rounded-2xl text-xs md:text-sm font-black transition-all duration-500 ${
+                activeTab === tab.id 
+                  ? "text-white" 
+                  : isDark ? "text-gray-400 hover:text-white" : "text-gray-500 hover:text-black"
               }`}
             >
-              <span className="relative z-10">{tab}</span>
-              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </motion.button>
+              <span className="relative z-10 uppercase tracking-widest">{tab.label}</span>
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="activeTab"
+                  className={`absolute inset-0 rounded-2xl shadow-xl ${
+                    isDark ? "bg-[#3A506B]" : "bg-[#0B132B]"
+                  }`}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </button>
           ))}
         </div>
 
-        <div ref={myDivRef} className="w-full">
-          <Card className={`w-full overflow-hidden border-0 transition-all duration-500 rounded-3xl shadow-xl ${
-            isDark ? "bg-[#1C2541]/20" : "bg-white/50 backdrop-blur-sm"
-          }`}>
-            <CardContent className="p-6 md:p-10 lg:p-12">
-              <motion.div 
-                key={activeTab + isExpanded}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-4 md:gap-6 justify-items-center"
-              >
-                <AnimatePresence mode="popLayout">
-                  {skillsToDisplay.map((skill) => (
-                    <motion.div
-                      key={`${skill.categoryKey}-${skill.name}`}
-                      variants={itemVariants}
-                      className={`group flex flex-col items-center justify-center p-3 md:p-4 rounded-2xl w-full max-w-[100px] aspect-square transition-all duration-500 relative overflow-hidden shadow-md ${
-                        isDark
-                          ? "bg-[#1C2541] border border-[#3A506B]/40 hover:border-[#6FFFE9]/60"
-                          : "bg-white border border-gray-100 hover:border-[#3A506B]/30 shadow-sm"
-                      } hover:-translate-y-2 hover:shadow-xl`}
-                    >
-                      <motion.div 
-                        className="relative w-8 md:w-10 h-8 md:h-10 mb-2"
-                        whileHover={{ rotate: 10, scale: 1.15 }}
-                      >
-                        <img
-                          src={skill.icon}
-                          alt={skill.alt}
-                          className="w-full h-full object-contain filter drop-shadow-md brightness-110"
-                          loading="lazy"
-                          decoding="async"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = "none";
-                            target.nextElementSibling?.classList.remove("hidden");
-                          }}
-                        />
-                        <div className="hidden w-full h-full bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 font-black">
-                          {skill.name.charAt(0)}
-                        </div>
-                      </motion.div>
-                      <span className={`text-[10px] sm:text-xs font-black text-center tracking-tight transition-colors duration-300 ${isDark ? "text-gray-300 group-hover:text-[#6FFFE9]" : "text-[#0B132B]"}`}>
-                        {skill.name}
-                      </span>
-                      
-                      {/* Gradient overlay on hover */}
-                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${isDark ? "bg-gradient-to-br from-[#6FFFE9] to-[#3A506B]" : "bg-gradient-to-br from-[#3A506B] to-[#5BC0BE]"}`} />
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </motion.div>
-
-              {hasMoreSkills && (
-                <div className="flex justify-center mt-10 md:mt-12">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className={`group flex items-center gap-2 px-8 py-3 rounded-full font-bold text-base transition-all duration-300 shadow-lg ${
-                      isDark
-                        ? "bg-[#5BC0BE] text-[#0B132B] hover:bg-[#6FFFE9]"
-                        : "bg-[#3A506B] text-white hover:bg-[#1C2541]"
-                    }`}
-                  >
-                    <span>
-                      {isExpanded
-                        ? t.skills.showLess || "Collapse"
-                        : `${t.skills.showMore || "Explore"} (${hiddenSkillsCount}+)`}
-                    </span>
-                    <motion.svg
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
-                    </motion.svg>
-                  </motion.button>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+        {/* Tech Constellation Grid */}
+        <div className="w-full max-w-5xl">
+          <motion.div 
+            layout
+            className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3 md:gap-5 justify-items-start"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredSkills.map((skill, index) => (
+                <SkillCard 
+                  key={`${skill.category}-${skill.name}`}
+                  skill={skill}
+                  index={index}
+                  isDark={isDark}
+                  isHovered={hoveredSkill === skill.name}
+                  onHover={() => setHoveredSkill(skill.name)}
+                  onLeave={() => setHoveredSkill(null)}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </div>
+  );
+}
+
+function SkillCard({ skill, index, isDark, isHovered, onHover, onLeave }: any) {
+  // 3D Tilt Effect Values
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  function handleMouseMove(e: any) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+    onLeave();
+  }
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.5, delay: index * 0.02 }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={onHover}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="relative w-full aspect-square cursor-pointer group"
+    >
+      <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+        isHovered 
+          ? isDark ? "bg-[#6FFFE9]/20 shadow-[0_0_30px_rgba(111,255,233,0.3)]" : "bg-[#0B132B]/5 shadow-2xl"
+          : isDark ? "bg-white/5 border border-white/10" : "bg-white border border-gray-100 shadow-sm"
+      }`} />
+
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-2 z-10" style={{ transform: "translateZ(30px)" }}>
+        <div className="relative w-8 h-8 md:w-10 md:h-10 mb-2 transition-transform duration-500 group-hover:scale-110">
+          <img
+            src={skill.icon}
+            alt={skill.alt}
+            className="w-full h-full object-contain filter drop-shadow-md group-hover:brightness-125 transition-all"
+            onError={(e) => {
+              (e.target as any).src = `https://ui-avatars.com/api/?name=${skill.name}&background=random`;
+            }}
+          />
+        </div>
+        <span className={`text-[8px] md:text-[10px] font-black text-center uppercase tracking-tight transition-colors duration-300 ${
+          isHovered 
+            ? isDark ? "text-[#6FFFE9]" : "text-[#0B132B]"
+            : isDark ? "text-gray-400" : "text-gray-600"
+        }`}>
+          {skill.name}
+        </span>
+      </div>
+
+      {/* Glow Aura */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1.2 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            className={`absolute inset-0 -z-10 blur-2xl rounded-full ${
+              isDark ? "bg-[#6FFFE9]/10" : "bg-blue-100"
+            }`}
+          />
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }

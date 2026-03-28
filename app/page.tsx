@@ -106,17 +106,19 @@ export default function Portfolio() {
   // Manual event listener for non-passive events (wheel and touch)
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // Allow scrolling in modals or other specific elements if needed
-      // but for portfolio we want generic blocking
       if (isLockedRef.current || isMenuOpen) {
         e.preventDefault();
         return;
       }
 
-      const isInternalScroll = (e.target as HTMLElement).closest(".overflow-y-auto");
-      if (isInternalScroll && isInternalScroll.scrollHeight > isInternalScroll.clientHeight) {
-         // Allow internal scrolls if we're inside one (like a large card)
-         return;
+      const internalContainer = (e.target as HTMLElement).closest(".overflow-y-auto") as HTMLElement;
+      if (internalContainer) {
+        const { scrollTop, scrollHeight, clientHeight } = internalContainer;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        const isAtTop = scrollTop <= 0;
+
+        if (e.deltaY > 0 && !isAtBottom) return; // scroll down internally
+        if (e.deltaY < 0 && !isAtTop) return;    // scroll up internally
       }
 
       if (Math.abs(e.deltaY) < 1) return;
@@ -147,8 +149,19 @@ export default function Portfolio() {
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (isLockedRef.current || isMenuOpen) return;
+      
+      const internalContainer = (e.target as HTMLElement).closest(".overflow-y-auto") as HTMLElement;
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY - touchEndY;
+
+      if (internalContainer) {
+        const { scrollTop, scrollHeight, clientHeight } = internalContainer;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+        const isAtTop = scrollTop <= 0;
+
+        if (diff > 0 && !isAtBottom) return; // swiping up (scrolling down)
+        if (diff < 0 && !isAtTop) return;    // swiping down (scrolling up)
+      }
 
       if (Math.abs(diff) > 2) { 
         if (diff > 0) {
