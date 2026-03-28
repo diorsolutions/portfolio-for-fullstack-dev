@@ -16,7 +16,7 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
         isDark ? "bg-[#0B132B]" : "bg-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,10 +59,10 @@ export default function Testimonials({ isDark, t }: TestimonialsProps) {
                 className="h-full"
               >
                 <Card
-                  className={`relative h-full overflow-hidden group transition-all duration-700 hover:-translate-y-2 border-0 shadow-lg ${
+                  className={`relative h-full overflow-hidden group transition-all duration-700 hover:-translate-y-2 border-0 shadow-lg backdrop-blur-3xl ${
                     isDark
-                      ? "bg-[#1C2541]/40 border-t border-t-[#3A506B]/30 hover:bg-[#1C2541]/60"
-                      : "bg-gray-50 border-t border-t-gray-100"
+                      ? "bg-[#1C2541]/70 border-t border-t-white/10 hover:bg-[#1C2541]/85"
+                      : "bg-white/95 border-t border-t-gray-100 shadow-xl"
                   } rounded-[2rem]`}
                 >
                   <CardContent className="p-6 md:p-8 h-full flex flex-col">

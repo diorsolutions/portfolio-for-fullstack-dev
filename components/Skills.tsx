@@ -62,8 +62,8 @@ export default function Skills({ isDark, t }: SkillsProps) {
         </motion.div>
 
         {/* Premium Tab Control */}
-        <div className={`flex flex-wrap justify-center gap-2 p-2 rounded-3xl mb-12 backdrop-blur-md border ${
-          isDark ? "bg-white/5 border-white/10" : "bg-gray-100/50 border-gray-200"
+        <div className={`flex flex-wrap justify-center gap-2 p-2 rounded-3xl mb-12 backdrop-blur-3xl border ${
+          isDark ? "bg-[#1C2541]/70 border-white/10" : "bg-white/80 border-gray-200 shadow-xl"
         }`}>
           {tabs.map((tab) => (
             <button
@@ -160,10 +160,10 @@ function SkillCard({ skill, index, isDark, isHovered, onHover, onLeave }: any) {
       }}
       className="relative w-full aspect-square cursor-pointer group"
     >
-      <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+      <div className={`absolute inset-0 rounded-2xl transition-all duration-500 backdrop-blur-xl ${
         isHovered 
-          ? isDark ? "bg-[#6FFFE9]/20 shadow-[0_0_30px_rgba(111,255,233,0.3)]" : "bg-[#0B132B]/5 shadow-2xl"
-          : isDark ? "bg-white/5 border border-white/10" : "bg-white border border-gray-100 shadow-sm"
+          ? isDark ? "bg-[#6FFFE9]/30 shadow-[0_0_30px_rgba(111,255,233,0.3)]" : "bg-[#0B132B]/10 shadow-2xl"
+          : isDark ? "bg-[#1C2541]/50 border border-white/10" : "bg-white/90 border border-gray-100 shadow-sm"
       }`} />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center p-2 z-10" style={{ transform: "translateZ(30px)" }}>

@@ -127,8 +127,8 @@ export default function Experience({ isDark, t }: ExperienceProps) {
                     }`}>
                       <Card className={`group relative overflow-hidden border border-white/10 shadow-3xl transition-all duration-700 hover:-translate-y-3 ${
                         isDark
-                          ? "bg-white/5 backdrop-blur-xl hover:bg-white/10"
-                          : "bg-white/80 backdrop-blur-md hover:shadow-2xl border-gray-200"
+                          ? "bg-[#1C2541]/60 backdrop-blur-3xl hover:bg-[#1C2541]/80"
+                          : "bg-white/90 backdrop-blur-2xl hover:shadow-2xl border-gray-200"
                       } rounded-[2rem]`}>
                         <CardContent className="p-6 md:p-10">
                           {/* Branch indicator */}

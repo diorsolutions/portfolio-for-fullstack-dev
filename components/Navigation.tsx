@@ -91,8 +91,8 @@ export default function Navigation({
   return (
     <nav
       className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isDark ? "bg-[#0B132B]/90" : "bg-white/90"
-      } backdrop-blur-md border-b ${
+        isDark ? "bg-[#0B132B]/85" : "bg-white/90"
+      } backdrop-blur-3xl border-b ${
         isDark ? "border-[#1C2541]" : "border-gray-200"
       }`}
     >
@@ -186,9 +186,9 @@ export default function Navigation({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className={`absolute right-0 mt-2 w-40 rounded-2xl p-1.5 border shadow-2xl z-[100] backdrop-blur-xl ${
+                    className={`absolute right-0 mt-2 w-40 rounded-2xl p-1.5 border shadow-2xl z-[100] backdrop-blur-3xl ${
                       isDark
-                        ? "bg-[#0B132B]/95 border-[#1C2541]/50"
+                        ? "bg-[#0B132B]/98 border-[#1C2541]/50"
                         : "bg-white/95 border-gray-100"
                     }`}
                   >

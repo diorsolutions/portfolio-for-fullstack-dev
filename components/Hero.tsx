@@ -16,7 +16,7 @@ export default function Hero({ isDark, t, scrollToSection }: HeroProps) {
         isDark ? "bg-[#0B132B]" : "bg-white"
       }`}
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="animate-fade-in-up">
           <p
             className={`text-lg mb-4 ${

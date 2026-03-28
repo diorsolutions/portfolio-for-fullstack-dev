@@ -32,7 +32,7 @@ export default function Projects({ isDark, t }: ProjectsProps) {
 
   return (
     <div className="h-screen py-8 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Title */}
         <motion.h2
           initial={{ opacity: 0, scale: 0.9 }}
@@ -74,8 +74,8 @@ export default function Projects({ isDark, t }: ProjectsProps) {
               >
                 <Card
                   className={`flex flex-col lg:flex-row h-auto lg:h-[500px] overflow-hidden border-0 shadow-[0_50px_100px_rgba(0,0,0,0.3)] rounded-[3rem] ${
-                    isDark ? "bg-[#1C2541]/60" : "bg-white"
-                  } backdrop-blur-xl transition-all duration-500`}
+                    isDark ? "bg-[#1C2541]/70" : "bg-white/95"
+                  } backdrop-blur-[50px] transition-all duration-500`}
                 >
                   {/* Immersive Image Section */}
                   <div className="relative w-full lg:w-[60%] h-[350px] lg:h-full group overflow-hidden bg-black/5">
@@ -140,7 +140,7 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                   </div>
 
                   {/* Project Details Section */}
-                  <CardContent className={`p-6 md:p-10 flex flex-col justify-center flex-1 relative ${isDark ? "bg-gradient-to-br from-[#1C2541]/40 to-[#0B132B]/60" : "bg-gray-50/50"}`}>
+                  <CardContent className={`p-6 md:p-10 flex flex-col justify-center flex-1 relative ${isDark ? "bg-gradient-to-br from-[#1C2541]/60 to-[#0B132B]/80 backdrop-blur-3xl" : "bg-white/90 backdrop-blur-2xl"}`}>
                     <div className="space-y-6">
                        <div>
                           <motion.div 

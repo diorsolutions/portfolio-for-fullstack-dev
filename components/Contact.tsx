@@ -110,7 +110,7 @@ export default function Contact({ isDark, t }: ContactProps) {
 
   return (
     <div className={`h-screen flex flex-col items-center justify-between pt-16 pb-2 transition-colors duration-500 ${isDark ? "bg-[#0B132B]" : "bg-gray-50"}`}>
-      <div className="max-w-7xl mx-auto w-full text-center flex-grow flex flex-col justify-center px-4 md:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto w-full text-center flex-grow flex flex-col justify-center px-4 md:px-8">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,10 +141,10 @@ export default function Contact({ isDark, t }: ContactProps) {
           {contactItems.map((item, index) => (
             <motion.div key={index} variants={itemVariants} className="h-full">
               <Card
-                className={`group relative h-full transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 shadow-xl rounded-[2rem] ${
+                className={`group relative h-full transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 shadow-xl rounded-[2rem] backdrop-blur-3xl ${
                   isDark
-                    ? "bg-[#1C2541]/40 border-t border-t-[#3A506B]/20 hover:bg-[#1C2541]/60"
-                    : "bg-white hover:shadow-gray-200"
+                    ? "bg-[#1C2541]/70 border-t border-t-white/10 hover:bg-[#1C2541]/85"
+                    : "bg-white/95 hover:shadow-gray-200"
                 }`}
                 onClick={() => window.open(item.url, "_blank")}
               >

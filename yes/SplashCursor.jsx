@@ -5,13 +5,13 @@ function SplashCursor({
   SIM_RESOLUTION = 128,
   DYE_RESOLUTION = 1440,
   CAPTURE_RESOLUTION = 512,
-  DENSITY_DISSIPATION = 3.5,
-  VELOCITY_DISSIPATION = 2,
+  DENSITY_DISSIPATION = 6.0,
+  VELOCITY_DISSIPATION = 4.0,
   PRESSURE = 0.1,
   PRESSURE_ITERATIONS = 20,
   CURL = 3,
-  SPLAT_RADIUS = 0.2,
-  SPLAT_FORCE = 6000,
+  SPLAT_RADIUS = 0.03,
+  SPLAT_FORCE = 1000,
   SHADING = true,
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
@@ -1064,10 +1064,16 @@ function SplashCursor({
     }
 
     function generateColor() {
-      let c = HSVtoRGB(Math.random(), 1.0, 1.0);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
+      let h = Math.random();
+      let s = 0.5 + Math.random() * 0.5;
+      let v = 0.4 + Math.random() * 0.6;
+      let c = HSVtoRGB(h, s, v);
+      
+      // Randomly make some splats darker (darkness)
+      let multiplier = Math.random() < 0.4 ? 0.02 : 0.08;
+      c.r *= multiplier;
+      c.g *= multiplier;
+      c.b *= multiplier;
       return c;
     }
 
@@ -1247,7 +1253,7 @@ function SplashCursor({
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 50,
+        zIndex: 1,
         pointerEvents: "none",
         width: "100%",
         height: "100%",

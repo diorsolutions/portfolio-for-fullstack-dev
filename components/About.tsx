@@ -14,7 +14,7 @@ export default function About({ isDark, t }: AboutProps) {
     <div
       className={`h-screen flex flex-col items-center justify-center pt-14 pb-8 px-4 overflow-hidden transition-colors duration-500 ${isDark ? "bg-[#0B132B]" : "bg-white"}`}
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
         <motion.h2 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,10 +32,10 @@ export default function About({ isDark, t }: AboutProps) {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-6 order-2 lg:order-1"
           >
-            <div className={`p-5 md:p-6 rounded-3xl border-0 shadow-lg transition-all duration-700 ${
-              isDark ? "bg-[#1C2541]/40 border-l-2 border-[#5BC0BE]/30 hover:bg-[#1C2541]/60" : "bg-gray-50 border-l-2 border-[#3A506B]/20 hover:shadow-gray-200"
+            <div className={`p-5 md:p-6 rounded-3xl border-0 shadow-lg transition-all duration-700 backdrop-blur-3xl ${
+              isDark ? "bg-[#1C2541]/60 border-l-2 border-[#5BC0BE]/30 hover:bg-[#1C2541]/80" : "bg-white/90 border-l-2 border-[#3A506B]/20 shadow-xl"
             }`}>
-              <p className={`text-sm md:text-base leading-relaxed font-medium ${isDark ? "text-gray-300 group-hover:text-gray-200" : "text-gray-700"}`}>
+              <p className={`text-sm md:text-base leading-relaxed font-medium ${isDark ? "text-gray-300 group-hover:text-gray-100" : "text-gray-700"}`}>
                 {t.about.bio}
               </p>
             </div>
@@ -43,26 +43,26 @@ export default function About({ isDark, t }: AboutProps) {
             <div className="grid sm:grid-cols-2 gap-6">
               <motion.div 
                 whileHover={{ y: -5 }}
-                className={`p-6 rounded-3xl border-0 shadow-lg ${isDark ? "bg-[#1C2541]/30 border-t border-[#3A506B]/30" : "bg-white border-t border-gray-100"}`}
+                className={`p-6 rounded-3xl border-0 shadow-lg backdrop-blur-2xl ${isDark ? "bg-[#1C2541]/70 border-t border-white/10" : "bg-white/90 border-t border-gray-100"}`}
               >
                 <h3 className={`text-lg font-bold mb-2 flex items-center gap-2 ${isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"}`}>
                   <span className="w-2.5 h-2.5 rounded-full bg-[#5BC0BE] shadow-[0_0_10px_#5BC0BE]"></span>
                   {t.about.education}
                 </h3>
-                <p className={`text-sm md:text-base font-medium leading-relaxed ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                <p className={`text-sm md:text-base font-medium leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                   {t.about.educationText}
                 </p>
               </motion.div>
 
               <motion.div 
                 whileHover={{ y: -5 }}
-                className={`p-6 rounded-3xl border-0 shadow-lg ${isDark ? "bg-[#1C2541]/30 border-t border-[#3A506B]/30" : "bg-white border-t border-gray-100"}`}
+                className={`p-6 rounded-3xl border-0 shadow-lg backdrop-blur-2xl ${isDark ? "bg-[#1C2541]/70 border-t border-white/10" : "bg-white/90 border-t border-gray-100"}`}
               >
                 <h3 className={`text-lg font-bold mb-2 flex items-center gap-2 ${isDark ? "text-[#5BC0BE]" : "text-[#3A506B]"}`}>
                    <span className="w-2.5 h-2.5 rounded-full bg-[#5BC0BE] shadow-[0_0_10px_#5BC0BE]"></span>
                   {t.about.experience}
                 </h3>
-                <p className={`text-sm md:text-base font-medium leading-relaxed ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+                <p className={`text-sm md:text-base font-medium leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                   {t.about.experienceText}
                 </p>
               </motion.div>
