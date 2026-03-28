@@ -224,7 +224,7 @@ export default function RootLayout({
         className={` select-none ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="hidden lg:block">
-          {/* <SplashCursor /> */}
+          <SplashCursor />
         </div>
 
         {children}
