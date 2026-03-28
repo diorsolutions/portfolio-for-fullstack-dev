@@ -152,12 +152,12 @@ export default function Projects({ isDark, t }: ProjectsProps) {
                             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#5BC0BE]">Case Study</span>
                           </motion.div>
                           <h3 className={`text-2xl md:text-3xl lg:text-4xl font-black leading-tight ${isDark ? "text-white" : "text-[#0B132B]"}`}>
-                            {projectsData[currentIndex].title}
+                            {t.projects.items[currentIndex]?.title || projectsData[currentIndex].title}
                           </h3>
                        </div>
 
                       <p className={`text-lg md:text-xl leading-relaxed ${isDark ? "text-gray-300/90" : "text-gray-600"} font-medium`}>
-                        {projectsData[currentIndex].description}
+                        {t.projects.items[currentIndex]?.description || projectsData[currentIndex].description}
                       </p>
                       
                       <div className="flex flex-wrap gap-3">

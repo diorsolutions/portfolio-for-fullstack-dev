@@ -56,6 +56,10 @@ export interface TranslationType {
     title: string;
     viewProject: string;
     viewCode: string;
+    items: {
+      title: string;
+      description: string;
+    }[];
   };
   testimonials: {
     title: string;
@@ -99,21 +103,21 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     },
     hero: {
       greeting: "Hello, I'm",
-      name: "Dior Olimov",
-      title: "Middle Frontend Developer",
+      name: "Diyor Olimov",
+      title: "Middle Fullstack Developer",
       subtitle:
-        "Crafting exceptional digital experiences with modern JavaScript frameworks and cutting-edge technologies",
+        "Building high-performance, complete web applications with modern frontend and robust backend technologies",
       cta: "Get In Touch",
     },
     about: {
       title: "About Me",
-      bio: "I'm a Middle frontend developer with expertise in modern JavaScript ecosystems, specializing in React, Next.js, and TypeScript. I'm passionate about creating scalable, performant, and user-centric web applications that drive business success.",
+      bio: "Middle Fullstack Developer with deep expertise in React, Node.js, and TypeScript. I specialize in building scalable, secure, and user-centric digital products that deliver real business value.",
       education: "Education & Background",
       educationText:
-        "Advanced training at Najot Ta'lim and IT Park Uzbekistan, with continuous learning in emerging technologies and industry best practices.",
+        "Advanced training at Najot Ta'lim and IT Park Uzbekistan. Focused on full-stack architecture, modern workflows, and industry-standard security.",
       experience: "Professional Journey",
       experienceText:
-        'Leading frontend development projects with focus on performance optimization, accessibility, and modern development workflows. Active contributor to the developer community as "diorsolutions".',
+        "Leading end-to-end development of complex web applications. Expert in performance optimization and streamlining development cycles for faster delivery.",
     },
     skills: {
       title: "Skills & Expertise",
@@ -130,25 +134,25 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       current: "Current",
       items: [
         {
-          title: "Middle Frontend Developer",
+          title: "Middle Fullstack Developer",
           company: "diorsolutions",
           period: "2023 - Present",
           description:
-            "Leading frontend development projects, mentoring junior developers, and implementing modern web solutions.",
+            "Building scalable APIs, intuitive UIs, and robust architectures using the latest full-stack technologies and industry-standard practices.",
         },
         {
           title: "Frontend Developer",
           company: "Freelance",
           period: "2022 - 2023",
           description:
-            "Developed responsive web applications using React, TypeScript, and modern CSS frameworks.",
+            "Developed responsive web applications using React, TypeScript, and modern CSS frameworks with focus on pixel-perfect designs.",
         },
         {
           title: "Web Developer",
           company: "IT Park Uzbekistan",
           period: "2021 - 2022",
           description:
-            "Built interactive web interfaces and collaborated with design teams to create user-friendly experiences.",
+            "Built interactive web interfaces and collaborated with design teams to create user-friendly experiences for various digital platforms.",
         },
       ],
     },
@@ -156,6 +160,24 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       title: "Featured Projects",
       viewProject: "View Live",
       viewCode: "Source Code",
+      items: [
+        {
+          title: "AI Chat App",
+          description: "Intelligent messaging platform with AI integration, real-time communication, and advanced user experience optimization.",
+        },
+        {
+          title: "Dentist CMS",
+          description: "Professional management system for dental clinics featuring real-time scheduling, patient records, and analytics dashboard.",
+        },
+        {
+          title: "Cheff Bros",
+          description: "Premium food delivery platform with seamless animations, real-time order tracking, and highly responsive mobile-first design.",
+        },
+        {
+          title: "PIRLS Test",
+          description: "Advanced educational assessment platform with secure authentication, real-time analytics, and dynamic test management.",
+        }
+      ],
     },
     testimonials: {
       title: "What Clients Say",
@@ -164,37 +186,19 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
           name: "Sarah Johnson",
           role: "Product Manager",
           company: "TechCorp",
-          text: "Diyor delivered exceptional work on our React application. His attention to detail and technical expertise exceeded our expectations.",
+          text: "Diyor delivered exceptional results. His full-stack expertise and attention to detail exceeded our professional expectations.",
         },
         {
           name: "Ahmed Hassan",
           role: "CTO",
           company: "StartupXYZ",
-          text: "Working with Diyor was a game-changer for our frontend development. His modern approach and clean code made a huge difference.",
+          text: "Working with Diyor was a game-changer. His modern full-stack approach and clean code made a huge impact on our product.",
         },
         {
           name: "Maria Rodriguez",
           role: "Design Lead",
           company: "Creative Agency",
-          text: "Diyor perfectly translated our designs into pixel-perfect, responsive web applications. Highly recommended!",
-        },
-        {
-          name: "Sarah Johnson",
-          role: "Product Manager",
-          company: "TechCorp",
-          text: "Diyor delivered exceptional work on our React application. His attention to detail and technical expertise exceeded our expectations.",
-        },
-        {
-          name: "Ahmed Hassan",
-          role: "CTO",
-          company: "StartupXYZ",
-          text: "Working with Diyor was a game-changer for our frontend development. His modern approach and clean code made a huge difference.",
-        },
-        {
-          name: "Maria Rodriguez",
-          role: "Design Lead",
-          company: "Creative Agency",
-          text: "Diyor perfectly translated our designs into pixel-perfect, responsive web applications. Highly recommended!",
+          text: "Perfectly translated our designs into premium, high-performance applications. Highly recommended for any complex project!",
         },
       ],
     },
@@ -233,20 +237,20 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     hero: {
       greeting: "Привет, я",
       name: "Диёр Олимов",
-      title: "Middle Frontend Разработчик",
+      title: "Middle Fullstack Разработчик",
       subtitle:
-        "Создаю исключительные цифровые решения с современными JavaScript фреймворками и передовыми технологиями",
+        "Создаю высокопроизводительные веб-приложения с использованием современных фронтенд и бэкенд технологий",
       cta: "Связаться",
     },
     about: {
       title: "Обо мне",
-      bio: "Я Middle frontend разработчик с экспертизой в современных JavaScript экосистемах, специализирующийся на React, Next.js и TypeScript. Увлечен созданием масштабируемых, производительных и ориентированных на пользователя веб-приложений.",
+      bio: "Middle Fullstack разработчик с опытом в React, Node.js и TypeScript. Специализируюсь на создании масштабируемых, безопасных и ориентированных на пользователя цифровых продуктов.",
       education: "Образование и опыт",
       educationText:
-        "Продвинутое обучение в Najot Ta'lim и IT Park Uzbekistan с постоянным изучением новых технологий и лучших практик индустрии.",
+        "Продвинутое обучение в Najot Ta'lim и IT Park Uzbekistan. Фокус на фуллстек разработке, современных архитектурах и стандартах безопасности.",
       experience: "Профессиональный путь",
       experienceText:
-        'Руководство frontend проектами с фокусом на оптимизацию производительности, доступность и современные рабочие процессы. Активный участник сообщества разработчиков как "diorsolutions".',
+        "Разработка сложных веб-приложений от начала до конца. Эксперт по оптимизации производительности и ускорению процессов разработки.",
     },
     skills: {
       title: "Навыки и экспертиза",
@@ -263,25 +267,25 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       current: "Текущий",
       items: [
         {
-          title: "Middle Frontend Разработчик",
+          title: "Middle Fullstack Разработчик",
           company: "diorsolutions",
           period: "2023 - Настоящее время",
           description:
-            "Руководство frontend проектами, наставничество младших разработчиков и внедрение современных веб-решений.",
+            "Разработка масштабируемых API, надежных архитектур и качественных интерфейсов с использованием современных fullstack технологий.",
         },
         {
           title: "Frontend Разработчик",
           company: "Фриланс",
           period: "2022 - 2023",
           description:
-            "Разработка адаптивных веб-приложений с использованием React, TypeScript и современных CSS фреймворков.",
+            "Создание адаптивных веб-приложений с упором на современные CSS фреймворки и безупречный пользовательский интерфейс.",
         },
         {
           title: "Веб-разработчик",
           company: "IT Park Uzbekistan",
           period: "2021 - 2022",
           description:
-            "Создание интерактивных веб-интерфейсов и сотрудничество с дизайн-командами для создания удобных пользовательских интерфейсов.",
+            "Разработка интерактивных модулей и сотрудничество с дизайнерами для создания удобных и привлекательных решений.",
         },
       ],
     },
@@ -289,6 +293,24 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       title: "Избранные проекты",
       viewProject: "Посмотреть",
       viewCode: "Исходный код",
+      items: [
+        {
+          title: "AI Chat Приложение",
+          description: "Интеллектуальная платформа для обмена сообщениями с AI, поддержкой реального времени и оптимизацией UX.",
+        },
+        {
+          title: "Dentist CMS",
+          description: "Система управления для стоматологических клиник с расписанием, картами пациентов и панелью аналитики.",
+        },
+        {
+          title: "Cheff Bros",
+          description: "Премиальная платформа доставки еды с плавной анимацией, отслеживанием заказов и адаптивным дизайном.",
+        },
+        {
+          title: "PIRLS Тест",
+          description: "Образовательная платформа для тестирования с безопасной авторизацией и аналитикой в реальном времени.",
+        }
+      ],
     },
     testimonials: {
       title: "Отзывы клиентов",
@@ -297,19 +319,19 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
           name: "Сара Джонсон",
           role: "Продакт-менеджер",
           company: "TechCorp",
-          text: "Диёр выполнил исключительную работу над нашим React приложением. Его внимание к деталям и техническая экспертиза превзошли наши ожидания.",
+          text: "Диёр выполнил исключительную работу. Его fullstack экспертиза и внимание к деталям превзошли все наши ожидания.",
         },
         {
           name: "Ахмед Хассан",
           role: "CTO",
           company: "StartupXYZ",
-          text: "Работа с Диёром изменила наш подход к frontend разработке. Его современный подход и чистый код имели огромное значение.",
+          text: "Работа с Диёром изменила наш продукт. Его современный подход к разработке и чистый код заметно улучшили результат.",
         },
         {
           name: "Мария Родригес",
           role: "Руководитель дизайна",
           company: "Creative Agency",
-          text: "Диёр идеально перевел наши дизайны в пиксель-перфектные, адаптивные веб-приложения. Очень рекомендую!",
+          text: "Идеально воплотил наши дизайны в высокопроизводительные приложения. Рекомендую для любых сложных проектов!",
         },
       ],
     },
@@ -348,20 +370,20 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
     hero: {
       greeting: "Salom, men",
       name: "Diyor Olimov",
-      title: "Middle Frontend Dasturchi",
+      title: "Middle Fullstack Dasturchi",
       subtitle:
-        "Zamonaviy JavaScript freymvorklari va ilg'or texnologiyalar bilan ajoyib raqamli tajribalar yarataman",
+        "Zamonaviy frontend va baquvvat backend texnologiyalari orqali yuqori sifatli veb-ilovalar yarataman",
       cta: "Bog'lanish",
     },
     about: {
       title: "Men haqimda",
-      bio: "Men zamonaviy JavaScript ekotizimlarida tajribaga ega Middle frontend dasturchiman, React, Next.js va TypeScript bo'yicha mutaxassisman. Biznes muvaffaqiyatini ta'minlaydigan miqyosli, samarali va foydalanuvchi-markazli veb-ilovalar yaratishga ishtiyoqliman.",
+      bio: "React, Node.js va TypeScript bo'yicha tajribaga ega Middle Fullstack dasturchiman. Xavfsiz va samarali raqamli mahsulotlar yaratishga ixtisoslashganman.",
       education: "Ta'lim va tajriba",
       educationText:
-        "Najot Ta'lim va IT Park Uzbekistan'da ilg'or ta'lim, yangi texnologiyalar va sanoat eng yaxshi amaliyotlarini doimiy o'rganish bilan.",
+        "Najot Ta'lim va IT Park Uzbekistan'da ilg'or ta'lim. Full-stack arxitektura, zamonaviy ish jarayonlari va xavfsizlik standartlariga yo'naltirilgan.",
       experience: "Professional yo'l",
       experienceText:
-        'Ishlash samaradorligi optimallashtirish, foydalanish qulayligi va zamonaviy ishlab chiqish jarayonlariga e\'tibor qaratgan holda frontend loyihalarini boshqarish. "diorsolutions" sifatida dasturchilar jamiyatida faol ishtirokchi.',
+        "Murakkab veb-ilovalarni to'liq yakunigacha ishlab chiqish. Ishlash tezligini optimallashtirish va jarayonlarni avtomatlashtirish bo'yicha mutaxassis.",
     },
     skills: {
       title: "Ko'nikmalar va tajriba",
@@ -378,25 +400,25 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       current: "Hozirgi",
       items: [
         {
-          title: "Middle Wordpress Developer",
-          company: "Mahorat Soft",
+          title: "Middle Fullstack Dasturchi",
+          company: "diorsolutions",
           period: "2023 - Hozir",
           description:
-            "Frontend loyihalarini boshqarish, kichik dasturchilarga yo'l ko'rsatish va zamonaviy veb-yechimlarni joriy etish.",
+            "Zamonaviy full-stack texnologiyalar yordamida sifatli API, mustahkam web-arxitekturalar va foydalanuvchi-markazli interfeyslar yaratish.",
         },
         {
-          title: "Middle Frontend Dasturchi",
-          company: "Najot-ta'lim",
-          period: "2021 - 2022",
+          title: "Frontend Dasturchi",
+          company: "Freelance",
+          period: "2022 - 2023",
           description:
-            "Frontend loyihalarini boshqarish, kichik dasturchilarga yo'l ko'rsatish va zamonaviy veb-yechimlarni joriy etish.",
+            "React va zamonaviy CSS frameworklar yordamida har qanday qurilmaga moslashuvchan, mukammal dizaynli veb-ilovalar ishlab chiqish.",
         },
         {
           title: "Veb-dasturchi",
           company: "IT Park Uzbekistan",
-          period: "2022 - 2023",
+          period: "2021 - 2022",
           description:
-            "Interaktiv veb-interfeyslari yaratish va foydalanuvchi uchun qulay tajribalar yaratish uchun dizayn jamoalari bilan hamkorlik qilish.",
+            "Interaktiv modullar yaratish va dizayn jamoalari bilan hamkorlikda innovatsion raqamli tajribalarni hayotga tatbiq etish.",
         },
       ],
     },
@@ -404,6 +426,24 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
       title: "Tanlangan loyihalar",
       viewProject: "Jonli ko'rish",
       viewCode: "Manba kodi",
+      items: [
+        {
+          title: "AI Chat Ilovasi",
+          description: "AI integratsiyasi, real-vaqtda muloqot va yuqori darajadagi UX optimallashuviga ega aqlli chat platformasi.",
+        },
+        {
+          title: "Dentist CMS",
+          description: "Stomatologiya klinikalari uchun maxsus boshqaruv tizimi: jadval, bemorlar bazasi va tahliliy dashboard.",
+        },
+        {
+          title: "Cheff Bros",
+          description: "Premium ovqat buyurtma qilish platformasi: silliq animatsiyalar, buyurtmani kuzatish va mukammal dizayn.",
+        },
+        {
+          title: "PIRLS Test",
+          description: "Xavfsiz avtorizatsiya va real-vaqtda tahlilga ega zamonaviy ta'limiy imtihon va test platformasi.",
+        }
+      ],
     },
     testimonials: {
       title: "Mijozlar fikri",
@@ -412,19 +452,19 @@ export const translations: Record<"en" | "ru" | "uz", TranslationType> = {
           name: "Sara Jonson",
           role: "Mahsulot menejeri",
           company: "TechCorp",
-          text: "Diyor bizning React ilovamizda ajoyib ish qildi. Uning tafsilotlarga e'tibori va texnik tajribasi bizning kutganimizdan oshdi.",
+          text: "Diyor ajoyib natija ko'rsatdi. Uning fullstack tajribasi va har bir detalga bo'lgan e'tibori professional darajada qoyil qoldirdi.",
         },
         {
           name: "Ahmad Hasan",
           role: "CTO",
           company: "StartupXYZ",
-          text: "Diyor bilan ishlash bizning frontend ishlab chiqishimiz uchun o'zgarish bo'ldi. Uning zamonaviy yondashuvi va toza kodi katta farq qildi.",
+          text: "Diyor bilan ishlash mahsulotimizga katta ta'sir qildi. Uning zamonaviy yondashuvi va toza kodi sifatni sezilarli darajada oshirdi.",
         },
         {
           name: "Mariya Rodriges",
           role: "Dizayn rahbari",
           company: "Creative Agency",
-          text: "Diyor bizning dizaynlarimizni pixel-mukammal, moslashuvchan veb-ilovalarga mukammal tarzda tarjima qildi. Tavsiya etaman!",
+          text: "Dizaynlarimizni yuqori samarali ilovalarga mukammal darajada o'girib berdi. Murakkab loyihalar uchun tavsiya etaman!",
         },
       ],
     },

@@ -31,9 +31,8 @@ export const metadata: Metadata = {
 
     // Primary skills
     "Fullstack Developer",
+    "Middle Fullstack Developer",
     "Fullstack Software Engineer",
-    "Frontend Developer",
-    "Backend Developer",
     "Software Engineer",
     "Web Developer",
     "JavaScript Developer",
