@@ -27,6 +27,8 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home");
   const [isLocked, setIsLocked] = useState(false); // For UI debouncing
   
+  const [isDesktop, setIsDesktop] = useState(false);
+  
   const isLockedRef = useRef(false);
   const activeIndexRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -74,6 +76,17 @@ export default function Portfolio() {
     setTimeout(unlock, 1500);
   };
 
+  // Detect desktop/laptop
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
   // Track active section using Intersection Observer
   useEffect(() => {
     const observerOptions = {
@@ -105,6 +118,8 @@ export default function Portfolio() {
 
   // Manual event listener for non-passive events (wheel and touch)
   useEffect(() => {
+    if (!isDesktop) return; // Disable custom scroll lock logic on mobile/tablet
+
     const handleWheel = (e: WheelEvent) => {
       if (isLockedRef.current || isMenuOpen) {
         e.preventDefault();
@@ -187,7 +202,7 @@ export default function Portfolio() {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isDesktop]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -337,7 +352,9 @@ export default function Portfolio() {
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           variants={fadeInUp}
-          className="snap-start snap-always h-screen w-full relative flex flex-col justify-center overflow-hidden"
+          className={`${
+            isDesktop ? "h-screen overflow-hidden" : "min-h-screen py-20 pb-10"
+          } w-full relative flex flex-col justify-center`}
         >
           {component}
         </motion.section>
